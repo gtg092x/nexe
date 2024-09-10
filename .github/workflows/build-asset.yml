@@ -66,13 +66,13 @@ jobs:
           mv "${NEXE_ASSET}" "${artefact_name}"
           echo "NEXE_ASSET=${artefact_name}" >> "${GITHUB_ENV}"
       - name: Upload Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.NEXE_ASSET }}
           path: ${{ env.NEXE_ASSET }}
           if-no-files-found: error
       - name: Upload Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: integration-tests-${{ env.NEXE_TARGET }}${{ env.EXECUTABLE_SUFFIX }}
           path: integration-tests${{ env.EXECUTABLE_SUFFIX }}
@@ -99,14 +99,14 @@ jobs:
           npm run test:integration:run
       - if: ${{ matrix.os == 'ubuntu-latest' }}
         name: Upload Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.NEXE_ASSET }}
           path: ${{ env.NEXE_ASSET }}
           if-no-files-found: error
       - if: ${{ matrix.os == 'ubuntu-latest' }}
         name: Upload Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: integration-tests-${{ env.NEXE_TARGET }}${{ env.EXECUTABLE_SUFFIX }}
           path: integration-tests
