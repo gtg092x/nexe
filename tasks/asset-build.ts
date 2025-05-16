@@ -1,14 +1,18 @@
 'use strict'
 
-const { resolve } = require('path')
-const resolvePath = (path) => resolve(__dirname, '..', path)
+const { pathResolve } = require('path')
+const resolvePathDir = (path:string) => pathResolve(__dirname, '..', path)
 
 async function compile() {
   const executableSuffix = require('os').platform().startsWith('win') ? '.exe' : ''
-  const builtExecutablePath = require('path').join(process.env.NEXE_TMP, process.versions.node, `out/Release/node${executableSuffix}`)
+  const builtExecutablePath = require('path').join(
+    process.env.NEXE_TMP,
+    process.versions.node,
+    `out/Release/node${executableSuffix}`
+  )
   try {
     require('fs').unlinkSync(builtExecutablePath)
-  } catch(e) {}
+  } catch (e) {}
   const nexe = require('..')
   console.error('Building asset')
   return nexe.compile({
@@ -17,7 +21,7 @@ async function compile() {
     mangle: false,
     build: true,
     output: process.env.NEXE_ASSET || `nexe-asset${executableSuffix}`,
-    input: resolvePath('test/asset-build-input.js'),
+    input: resolvePathDir('test/asset-build-input.js'),
     configure: process.env.MUSL_BUILD ? ['--fully-static'] : [],
     temp: process.env.NEXE_TMP,
   })
