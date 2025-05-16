@@ -1,7 +1,7 @@
 'use strict'
 
 const { resolve } = require('path')
-const resolvePath = (path:string) => resolve(__dirname, '..', path)
+const resolvePath = (path) => resolve(__dirname, '..', path)
 
 async function build() {
   const nexe = require('..')
