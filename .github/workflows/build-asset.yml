@@ -47,7 +47,7 @@ jobs:
       - if: ${{ matrix.os == 'ubuntu-24.04-arm' || matrix.os == 'ubuntu-latest' }}
         run: sudo apt-get update
       - if: ${{ matrix.os != 'windows-latest' || matrix.os == 'windows-11-arm' }}
-        uses: hendrikmuhs/ccache-action@faf867a11c028c0b483fb2ae72b6fc8f7d842714
+        uses: hendrikmuhs/ccache-action@1eaec4d0426ec8b42d342bf1e7b56fd3660a8fd9
         with:
           create-symlink: true
           key: ${{ github.job }}-${{ matrix.os }}-${{ matrix.version }}
