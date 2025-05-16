@@ -1,6 +1,6 @@
 'use strict'
 
-const { pathResolve } = require('path')
+const { resolve:pathResolve } = require('path')
 const resolvePathDir = (path) => pathResolve(__dirname, '..', path)
 
 async function compile() {
