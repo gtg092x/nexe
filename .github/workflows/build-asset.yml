@@ -38,7 +38,7 @@ jobs:
         run: |
           echo "NODEJS_VERSION=$(node -p process.versions.node)" >> $env:GITHUB_ENV
           echo "NODEJS_VERSION=$(node -p process.versions.node)" >> "${GITHUB_ENV}"
-      - run: npm ci
+      - run: npm ci --include dev
       - uses: actions/setup-python@v5
         with:
           python-version: 3.13
@@ -56,7 +56,7 @@ jobs:
           echo "NEXE_ASSET=${{ env.NEXE_ASSET }}.exe" >> $env:GITHUB_ENV
           echo "EXECUTABLE_SUFFIX=.exe" >> $env:GITHUB_ENV
       - name: Build and test asset
-        run: npm i && node tasks/asset-build && node tasks/asset-test-build && npm run test:integration:run
+        run: node tasks/asset-build && node tasks/asset-test-build && npm run test:integration:run
       - name: Update release artefact name
         shell: bash
         run: |
@@ -96,7 +96,6 @@ jobs:
           export CC="ccache ${CC}" CXX="ccache ${CXX}" LD="ccache ${LD}"
           node tasks/asset-build
           node tasks/asset-test-build
-          npm i
           npm run test:integration:run
       - if: ${{ matrix.os == 'ubuntu-latest' || matrix.os == 'ubuntu-24.04-arm' }}
         name: Upload Artifact
