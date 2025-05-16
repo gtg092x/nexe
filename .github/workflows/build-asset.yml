@@ -8,7 +8,7 @@ on:
       versions:
         description: 'Node.js version'
         required: true
-        default: '[ "18" ]'
+        default: '[ "22" ]'
   pull_request:
     branches: [ master ]
   push:
@@ -21,7 +21,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ windows-latest, macos-latest, macos-13, ubuntu-latest, ubuntu-24.04-arm, 	windows-11-arm  ]
-        version: ${{ fromJSON(inputs.versions || '[ "18" ]') }}
+        version: ${{ fromJSON(inputs.versions || '[ "22" ]') }}
     env:
       NODEJS_VERSION: ${{ matrix.version }}
       NEXE_ASSET: ${{ github.workspace }}/nexe-asset
