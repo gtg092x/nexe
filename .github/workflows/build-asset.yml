@@ -39,9 +39,9 @@ jobs:
           echo "NODEJS_VERSION=$(node -p process.versions.node)" >> $env:GITHUB_ENV
           echo "NODEJS_VERSION=$(node -p process.versions.node)" >> "${GITHUB_ENV}"
       - run: npm ci
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v5
         with:
-          python-version: 3.9
+          python-version: 3.13
       - if: ${{ matrix.os == 'windows-latest' || matrix.os == 'windows-11-arm' }}
         run: choco install nasm
       - if: ${{ matrix.os == 'ubuntu-24.04-arm' || matrix.os == 'ubuntu-latest' }}
