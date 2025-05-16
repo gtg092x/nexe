@@ -20,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ windows-latest, macos-latest, macos-13, ubuntu-latest, ubuntu-24.04-arm, 	windows-11-arm  ]
+        os: [ windows-latest, macos-latest, macos-13, ubuntu-latest, ubuntu-24.04-arm, windows-11-arm  ]
         version: ${{ fromJSON(inputs.versions || '[ "22" ]') }}
     env:
       NODEJS_VERSION: ${{ matrix.version }}
