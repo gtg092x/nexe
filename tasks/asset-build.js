@@ -1,7 +1,7 @@
 'use strict'
 
 const { pathResolve } = require('path')
-const resolvePathDir = (path:string) => pathResolve(__dirname, '..', path)
+const resolvePathDir = (path) => pathResolve(__dirname, '..', path)
 
 async function compile() {
   const executableSuffix = require('os').platform().startsWith('win') ? '.exe' : ''
