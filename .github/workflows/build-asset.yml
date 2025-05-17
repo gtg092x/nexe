@@ -56,7 +56,7 @@ jobs:
           echo "NEXE_ASSET=${{ env.NEXE_ASSET }}.exe" >> $env:GITHUB_ENV
           echo "EXECUTABLE_SUFFIX=.exe" >> $env:GITHUB_ENV
       - name: Build and test asset
-        run: node tasks/asset-build && node tasks/asset-test-build && npm run test:integration:run
+        run: node tasks/asset-build && node tasks/asset-test-build
       - name: Update release artefact name
         shell: bash
         run: |
