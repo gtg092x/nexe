@@ -29,8 +29,11 @@ jobs:
         if: ${{ matrix.os == 'ubuntu-24.04-arm' || matrix.os == 'ubuntu-latest' }}
         run: |
           curl -LO https://unofficial-builds.nodejs.org/download/release/v23.7.0/node-v23.7.0-linux-x64-glibc-217.tar.xz
-          tar -xf node-v23.7.0-linux-x64-glibc-217.tar.xz --strip-components 1 -C /node20217
-          ldd /__e/node20/bin/node
+          mkdir /usr/lib/nodjs
+          tar -xf node-v23.7.0-linux-x64-glibc-217.tar.xz --strip-components 1 -C /usr/lib/nodjs
+          mv /usr/lib/nodjs/node-v23.7.0-linux-x64-glibc-217 /usr/lib/nodjs/node
+          export NODEJS_HOME=/usr/lib/nodejs/node
+          export PATH=$NODEJS_HOME/bin:$PATH
       - uses: actions/setup-node@v2
         if: ${{ matrix.os != 'ubuntu-24.04-arm' && matrix.os != 'ubuntu-latest' }}
         with:
