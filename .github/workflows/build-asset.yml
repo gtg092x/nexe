@@ -31,9 +31,7 @@ jobs:
           curl -LO https://unofficial-builds.nodejs.org/download/release/v23.7.0/node-v23.7.0-linux-x64-glibc-217.tar.xz
           mkdir /opt/hostedtoolcache/nodejs
           tar -xf node-v23.7.0-linux-x64-glibc-217.tar.xz --strip-components 1 -C /opt/hostedtoolcache/nodejs
-          ls -al /opt/hostedtoolcache/nodejs/
-          mv /opt/hostedtoolcache/nodejs/node-v23.7.0-linux-x64-glibc-217 /opt/hostedtoolcache/nodejs/node
-          export NODEJS_HOME=/opt/hostedtoolcache/nodejs/node
+          export NODEJS_HOME=/opt/hostedtoolcache/nodejs
           export PATH=$NODEJS_HOME/bin:$PATH
       - uses: actions/setup-node@v2
         if: ${{ matrix.os != 'ubuntu-24.04-arm' && matrix.os != 'ubuntu-latest' }}
