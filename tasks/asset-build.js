@@ -16,6 +16,7 @@ async function compile() {
     python: process.env.PYTHON || 'python',
     mangle: false,
     build: true,
+    sourceUrl: process.env.NODE_SRC ?? undefined,
     output: process.env.NEXE_ASSET || `nexe-asset${executableSuffix}`,
     input: resolvePath('test/asset-build-input.js'),
     configure: process.env.MUSL_BUILD ? ['--fully-static'] : [],
