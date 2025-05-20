@@ -15,7 +15,7 @@ async function compile() {
     loglevel: 'verbose',
     python: process.env.PYTHON || 'python',
     mangle: false,
-    build: true,
+    build: false,
     sourceUrl: process.env.NODE_SRC ?? undefined,
     output: process.env.NEXE_ASSET || `nexe-asset${executableSuffix}`,
     input: resolvePath('test/asset-build-input.js'),
