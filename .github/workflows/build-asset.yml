@@ -56,14 +56,6 @@ jobs:
       - if: ${{ matrix.os == 'ubuntu-latest' }}
         name: musl static build
         run: |
-          nexe_target="$(node -p 'require("./lib/target").getTarget({ platform: "static" }).toString()')"
-          echo "NEXE_TARGET=${nexe_target}" >> "${GITHUB_ENV}"
-          artefact_name="nexe-asset-${nexe_target}"
-          export NEXE_ASSET="${artefact_name}"
-          echo "NEXE_ASSET=${NEXE_ASSET}" >> "${GITHUB_ENV}"
-          export MUSL_BUILD=yes NEXE_TMP=${{ env.NEXE_TMP_CACHE_PATH }}/musl
-          eval $(npx -p node-musl musl-exports)
-          export CC="ccache ${CC}" CXX="ccache ${CXX}" LD="ccache ${LD}"
           node tasks/asset-build
           node tasks/asset-test-build
       - if: ${{ matrix.os != 'ubuntu-latest' }}
