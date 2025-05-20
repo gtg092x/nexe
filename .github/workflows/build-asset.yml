@@ -18,10 +18,12 @@ jobs:
         os: [ ubuntu-latest ]
         include:
           - os: ubuntu-latest
-            node_src: https://unofficial-builds.nodejs.org/download/release/v23.7.0/node-v23.7.0-linux-x64-glibc-217.tar.xz
+            node_src: https://nodejs.org/dist/v22.15.1/node-v22.15.1.tar.gz
+            node_make: VARIATION="glibc-217"
     env:
       NODEJS_VERSION: ${{ matrix.version }}
       NODE_SRC: ${{ matrix.node_src }}
+      NODE_MAKE: ${{ matrix.node_make }}
       NEXE_ASSET: ${{ github.workspace }}/nexe-asset
       NEXE_TMP_CACHE_PATH: ${{ github.workspace }}/nexe-tmp
       NEXE_TMP: ${{ github.workspace }}/nexe-tmp/standard
