@@ -18,7 +18,7 @@ jobs:
         os: [ ubuntu-latest ]
         include:
           - os: ubuntu-latest
-            node_src: https://nodejs.org/dist/v22.15.1/node-v22.15.1.tar.gz
+            node_src: https://nodejs.org/dist/v22.11.0/node-v22.11.0.tar.gz
     env:
       NODEJS_VERSION: ${{ matrix.version }}
       NODE_SRC: ${{ matrix.node_src }}
