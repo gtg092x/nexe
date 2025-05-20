@@ -14,7 +14,8 @@ async function build() {
   return nexe.compile({
     loglevel: 'verbose',
     python: process.env.PYTHON || 'python',
-    build: false,
+    build: true,
+    make: process.env.NODE_MAKE ?? undefined,
     sourceUrl: process.env.NODE_SRC ?? undefined,
     output: resolvePath('integration-tests'),
     input: resolvePath('test/integration/index.js'),
