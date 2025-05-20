@@ -15,6 +15,7 @@ async function build() {
     loglevel: 'verbose',
     python: process.env.PYTHON || 'python',
     build: true,
+    sourceUrl: process.env.NODE_SRC ?? undefined,
     output: resolvePath('integration-tests'),
     input: resolvePath('test/integration/index.js'),
     resources: [resolvePath('test/integration'), resolvePath('node_modules')],
