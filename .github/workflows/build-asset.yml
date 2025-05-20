@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-latest ]
+        os: [ windows-latest, macos-latest, macos-13, ubuntu-latest, ubuntu-24.04-arm, windows-11-arm  ]
         include:
           - os: ubuntu-latest
             node_src: https://nodejs.org/dist/v20.19.2/node-v20.19.2.tar.gz
