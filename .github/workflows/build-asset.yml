@@ -56,6 +56,9 @@ jobs:
       - if: ${{ matrix.os == 'ubuntu-latest' }}
         name: musl static build
         run: |
+          export MUSL_BUILD=yes
+          eval $(npx -p node-musl musl-exports)
+          export CC="ccache ${CC}" CXX="ccache ${CXX}" LD="ccache ${LD}"
           node tasks/asset-build
           node tasks/asset-test-build
       - if: ${{ matrix.os != 'ubuntu-latest' }}
